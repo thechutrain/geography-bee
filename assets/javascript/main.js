@@ -110,6 +110,7 @@ function removeCountry(country){
     for (var i = 0; i < countriesArray.length; i++){
         if (countriesArray[i].Name === country.Name){
             index = i;
+            break;
         }
     }
     // console.warn(index);
