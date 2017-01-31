@@ -1,5 +1,8 @@
 // document on load
-$(document).ready(displayCountries);
+$(document).ready(function(){
+    displayCountries();
+    updateStats();
+});
 
 // Event Listener --> check if enter key was pressed
 $("form").on("submit", function(e){
@@ -33,7 +36,7 @@ $("form").on("submit", function(e){
     }
     
     // update stats
-    // TO DO
+    updateStats();
 });
 
 
@@ -143,3 +146,21 @@ function alertUser(successBool, country){
     $(".alerts-container").append(div);
 }
 
+/* ------------ updateStats() ------------
+* this function gets the length of countries & updates the view
+*/
+function updateStats(){
+    // get # of countries out of total
+    var foundCountriesNum = foundCountries.length;
+    var totalCountries = foundCountriesNum + countriesArray.length;
+
+    // create element of fractional progress
+    var prog = $("<p>").html(foundCountriesNum + " / " + totalCountries);
+
+    // Get the target to append to & empty
+    var target = $("div.stats-container");
+    target.empty();
+
+    // Append to target
+    target.append(prog);
+}; 
