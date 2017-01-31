@@ -5,19 +5,24 @@ $("form").on("submit", function(e){
     e.preventDefault();
     // get user guess
     var userGuess = $("#guess").val().trim();
-    // get an array of matches - general matches of name & aka
-    var matches_arr = checkGeneralMatches(userGuess);
-    var match = checkExactMatches(matches_arr, userGuess);
+
+    // opt 1. get general matches & specific matches
+    var matches_arr = findAnyMatch(userGuess);
+    var match = findExactMatch(matches_arr, userGuess);
+    
+    // opt 2. skip general filter
+    // var match = findExactMatch(countriesArray, userGuess);
     console.log(match);
 });
 
 
-/* ------------ checkUserGuess() ------------
+/* ------------ findAnyMatches() ------------
 * gets the user's guess, checks to see if either it matches exactly a country
 * or if only one country comes back with that search
+* @param {string} guess - the input guess of a country
 * @return {array} countries - returns an array of countries
 */
-function checkGeneralMatches(guess){
+function findAnyMatch(guess){
     // 1. declare vars & get user guess
     var re = new RegExp(guess, "gi");
 
@@ -39,11 +44,13 @@ function checkGeneralMatches(guess){
     return matches;
 }; // closes checkForMatches
 
-/* takes the user guess & matches array
-* looks to see if any of the countries match exactly
+/* ------------ findExactMatch() ------------
+* looks to see if any of the countries match exactly with its name or aka array elements
+* @param {array} matchesArray - an array of countries
+* @param {string} guess - user guess of countries
 * @return {object} - will return the last perfect country object found
 */
-function checkExactMatches(matchesArr, guess){
+function findExactMatch(matchesArr, guess){
     var perfectMatchFound = false;
     var perfectMatchObj;
 
@@ -68,4 +75,4 @@ function checkExactMatches(matchesArr, guess){
 
     // return country if found as object, or empty object if not found
     return perfectMatchFound ? perfectMatchObj : {}; 
-}
+}; // closes function()
