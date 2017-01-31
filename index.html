@@ -13,14 +13,20 @@
   <title>Boilerplate for Heroku Deployment</title>
 </head>
 <body>
-<h2> Includes JQuery and Bootstrap 3 cdn</h2>
+<div class="container">
+  <form>
+    <input type="text" class="form-control" id="guess">
+  </form>
 
-<form>
-  <input type="text" class="form-control" id="guess">
-</form>
+  <div id="map_target"></div>
 
+
+
+</div>
 <!-- Including scripts here -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="assets/javascript/googleCharts.js"></script>
 <script src="assets/javascript/countries.js"></script>
 <script src="assets/javascript/main.js"></script>
 </body>
