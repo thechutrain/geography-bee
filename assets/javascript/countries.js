@@ -1,11 +1,19 @@
 var countriesArray = [
 {
 "Name": "Afghanistan",
-"Code": "AF"
+"Code": "AF",
+// "aka": 
+//     [
+//     "alternative name here",
+//     ]
 },
 {
 "Name": "Åland Islands",
-"Code": "AX"
+"Code": "AX",
+"aka": 
+    [
+        "Aland Islands"
+    ]
 },
 {
 "Name": "Albania",
@@ -17,7 +25,7 @@ var countriesArray = [
 },
 {
 "Name": "American Samoa",
-"Code": "AS"
+"Code": "AS",
 },
 {
 "Name": "Andorra",
