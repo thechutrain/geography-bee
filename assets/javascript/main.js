@@ -1,4 +1,5 @@
-// alert("testing if refs properly");
+// document on load
+$(document).ready(displayCountries);
 
 // Event Listener --> check if enter key was pressed
 $("form").on("submit", function(e){
@@ -12,7 +13,13 @@ $("form").on("submit", function(e){
     
     // opt 2. skip general filter
     // var match = findExactMatch(countriesArray, userGuess);
+
+    // Get the country match
     console.log(match);
+    foundCountries.push(match);
+
+    // update display
+    displayCountries();
 });
 
 
@@ -40,7 +47,7 @@ function findAnyMatch(guess){
         return country.Name.match(re) || aka;
     })
 
-    console.log(matches);
+    // console.log(matches);
     return matches;
 }; // closes checkForMatches
 
