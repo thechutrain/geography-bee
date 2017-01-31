@@ -13,14 +13,52 @@
   <title>Boilerplate for Heroku Deployment</title>
 </head>
 <body>
-<h2> Includes JQuery and Bootstrap 3 cdn</h2>
+<div class="container">
+  <!-- Header Row-->
+  <div class="row header">
+   <!-- Header / directions -->
+  <h2>Atlas</h2>
 
-<form>
-  <input type="text" class="form-control" id="guess">
-</form>
+   <!-- User Stats -->
+   <div class="stats-container">
 
+   </div>
+
+  <!-- input form -->
+  <form>
+    <div class="form-group">
+      <label for="guess">Type Country:</label>
+      <input type="text" class="form-control" id="guess">
+    </div>
+  </form>
+  
+  <!-- Alerts in Header -->
+  <div class="alerts-container">
+
+  </div>
+  <!--<div class="alert alert-success" role="alert">Found</div>
+  <div class="alert alert-danger" role="alert"> Not Found</div>-->
+  
+  </div>
+
+  <!-- Body Row-->
+  <div class="row">
+    <div id="map_target"></div>
+  </div>
+
+
+  <!-- Footer row -->
+  <div class="row">
+    <h4 class="text-center">Beta Version</h4>
+    <p class="text-center">
+      <small>&copy; Alan Chu </small>
+    </p>
+  </div>
+</div>
 <!-- Including scripts here -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="assets/javascript/googleCharts.js"></script>
 <script src="assets/javascript/countries.js"></script>
 <script src="assets/javascript/main.js"></script>
 </body>
