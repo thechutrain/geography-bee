@@ -737,7 +737,10 @@ var countriesArray = [
 },
 {
 "Name": "Russian Federation",
-"Code": "RU"
+"Code": "RU",
+"aka": [
+    "russia"
+    ]
 },
 {
 "Name": "Rwanda",
