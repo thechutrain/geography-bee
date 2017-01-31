@@ -20,15 +20,17 @@ $("form").on("submit", function(e){
         alertUser(false, userGuess);
     } else {
         // a country was found! 
+        // 1. add the country to foundCountries array
         foundCountries.push(match);
-        // clear form
+        // 2. remove that country from the original list
+        removeCountry(match);
+        // 3. clear form
         $("#guess").val("");
-        // alert user
+        // 4. alert user
         alertUser(true, match.Name);
+        // 5. update display
+        displayCountries();
     }
-
-    // update display
-    displayCountries();
     
     // update stats
     // TO DO
@@ -96,6 +98,28 @@ function findExactMatch(matchesArr, guess){
     return perfectMatchFound ? perfectMatchObj : {}; 
 }; // closes function()
 
+/* ------------ removeCountry() ------------
+*@param {object} country - the country object to remove
+*/
+function removeCountry(country){
+    var index = -1;
+    // 1. Get the index of the country in the countriesArray
+    for (var i = 0; i < countriesArray.length; i++){
+        if (countriesArray[i].Name === country.Name){
+            index = i;
+        }
+    }
+    // console.warn(index);
+    // console.warn(countriesArray[index]);
+
+    // 2. splice that country out
+    // console.log(countriesArray.length);
+    if (index !== -1){
+        countriesArray.splice(index, 1);
+        // console.log(countriesArray.length);
+    }
+};
+
 /* ------------ alertUser() ------------
 * updates the alert message, to let the user know if country was found or not
 * @param {boolean} successBool - an array of countries
@@ -118,3 +142,4 @@ function alertUser(successBool, country){
     $(".alerts-container").empty();
     $(".alerts-container").append(div);
 }
+
