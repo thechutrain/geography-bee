@@ -15,3 +15,7 @@
 ### Deployment
 
 check out the live deployment of this app here[http://google.com]
+
+
+### Notes
+http://data.okfn.org/data/core/country-list/r/data.json 
