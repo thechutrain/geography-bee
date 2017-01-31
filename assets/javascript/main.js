@@ -1,29 +1,42 @@
 // alert("testing if refs properly");
 
 // Event Listener --> check if enter key was pressed
-$(document).on("keydown", function(e){
-    if (e.key === "Enter" || e.keyCode === 13){
-        console.log("enter was pressed");
-        // call check country 
-        checkUserGuess(false) ? countryFound() : countryNotFound();
-    }
+$("form").on("submit", function(e){
+    e.preventDefault();
+    var countryMatchesArray = checkUserGuess();
+    countryMatchesArray.length === 1 ? countryFound() : countryNotFound();
 });
 
-function checkUserGuess(guess){
-    if (guess){
-        return true;
-    } else {
-        return false;
-    }
-    // 1. declare vars & get the user guess
+/* ------------ checkUserGuess() ------------
+* gets the user's guess, checks to see if either it matches exactly a country
+* or if only one country comes back with that search
+* @return {array} countries - returns an array of countries
+*/
+function checkUserGuess(){
+    // 1. declare vars & get user guess
+    var countryGuess = $("#guess").val().trim();
+    var re = new RegExp(countryGuess, "gi");
+    var perfectMatch = false; // handle weird exceptions like below
+    var countryFound;
 
     // 2. filter the array with the user's guess
-        // i. make regex
-        // ii. check if they match
-    
-    // 3. if there is only one match, then found is true
+    var matches = countriesArray.filter(function(country){
+        // check if theres an exact match
+        if (country.Name.toLowerCase() === countryGuess.toLowerCase()){
+            perfectMatch = true;
+            countryFound = country;
+        }
+        return country.Name.match(re);
+    })
 
-    // 4. Get that country and splice it out of original array --> found array
+    // 3. check if a perfect match was found
+    if (perfectMatch){
+        console.log("Found Perfect Match:" );
+        console.log(countryFound);
+        return [countryFound]; // one country object in an array
+    }  else {
+        return matches;
+    }
 };
 
 function countryFound(){
