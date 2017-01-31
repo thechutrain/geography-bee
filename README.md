@@ -16,6 +16,10 @@
 
 check out the live deployment of this app [here](https://thechutrain.github.io/geography-bee/)
 
+## Countries with issues:
+- iran
+- england
+- 
 
 ### Notes
 modified country data from here:
