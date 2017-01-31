@@ -14,12 +14,24 @@ $("form").on("submit", function(e){
     // opt 2. skip general filter
     // var match = findExactMatch(countriesArray, userGuess);
 
-    // Get the country match
-    console.log(match);
-    foundCountries.push(match);
+    // if the match variable isn't empty, then push to foundCountries array
+    if ($.isEmptyObject(match)) {
+        // no country found :(
+        alertUser(false, userGuess);
+    } else {
+        // a country was found! 
+        foundCountries.push(match);
+        // clear form
+        $("#guess").val("");
+        // alert user
+        alertUser(true, match.Name);
+    }
 
     // update display
     displayCountries();
+    
+    // update stats
+    // TO DO
 });
 
 
@@ -83,3 +95,26 @@ function findExactMatch(matchesArr, guess){
     // return country if found as object, or empty object if not found
     return perfectMatchFound ? perfectMatchObj : {}; 
 }; // closes function()
+
+/* ------------ alertUser() ------------
+* updates the alert message, to let the user know if country was found or not
+* @param {boolean} successBool - an array of countries
+* @param {string} country - either user input if incorrect, or Country.Name
+*/
+function alertUser(successBool, country){
+    if (successBool){
+        // found alert
+        var span = $("<span>").text("Found " + country);
+        var div = $("<div>").addClass("alert alert-success text-center").attr("role", "alert"); 
+        div.append(span);
+    } 
+    else {
+        // not found alert 
+        var span = $("<span>").text("Sorry, could not find " + country);
+        var div = $("<div>").addClass("alert alert-danger text-center").attr("role", "alert");
+        div.append(span);   
+    }
+    // append those divs
+    $(".alerts-container").empty();
+    $(".alerts-container").append(div);
+}

@@ -14,11 +14,32 @@
 </head>
 <body>
 <div class="container">
+  <!-- Header Row-->
+  <div class="row header">
+ <!-- Header / directions -->
+  <h2>Atlas</h2>
+  
+  <!-- input form -->
   <form>
-    <input type="text" class="form-control" id="guess">
+    <div class="form-group">
+      <label for="guess">Type Country:</label>
+      <input type="text" class="form-control" id="guess">
+    </div>
   </form>
+  
+  <!-- Alerts in Header -->
+  <div class="alerts-container">
+    
+  </div>
+  <!--<div class="alert alert-success" role="alert">Found</div>
+  <div class="alert alert-danger" role="alert"> Not Found</div>-->
+  
+  </div>
 
-  <div id="map_target"></div>
+  <!-- Body Row-->
+  <div class="row">
+    <div id="map_target"></div>
+  </div>
 
 
 
